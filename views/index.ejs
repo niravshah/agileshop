@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title><%= title %></title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
+
+    <link rel='stylesheet' href='/styles/vendor/bootstrap.css'/>
+    <link rel="stylesheet" href="/styles/vendor/slick/slick.css"/>
+    <link rel="stylesheet" href="/styles/vendor/slick/slick-theme.css"/>
+    <link rel='stylesheet' href="/styles/vendor/flatui/flat-ui.min.css" rel="stylesheet">
+    <link rel='stylesheet' href='/styles/style.css'/>
+
+</head>
+<body>
+
+<nav class="navbar fixed-top navbar-light bg-light">
+    <a class="navbar-brand" href="#">Agile Cards</a>
+    <a class="btn btn-outline-success my-2 my-sm-0" href="javascript:location.reload();">Restart</a>
+</nav>
+
+<div class="container" style="padding-top: 80px;">
+
+    <div id="slide1" class="row">
+        <div class="col-md-7">
+            <canvas id="n0" width="334" height="498"></canvas>
+        </div>
+        <div class="col-md-5 bg-lg1 p-3">
+            <h6>Step 1 : Customize Your Cards</h6>
+            <div class="mt-5 bg-lg2 p-4 br-2">
+                <p>A. Upload your logo</p>
+                <img class="mx-auto hidden" id="logoImg" src="">
+                <input class="hidden" id="logoUpload" type="file">
+                <button class="btn btn-primary" id="logoUpload2"
+                        onclick="document.getElementById('logoUpload').click();">Browse Files
+                </button>
+            </div>
+            <div class="mt-5 bg-lg2 p-4 br-2">
+                <p>B. Pick a Background</p>
+                <div class="btn-group">
+                    <button type="button" class="dropbtn btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        Please Select From List
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                    </button>
+
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a id="bg1" href="#" title="Select this card"><img src="/images/bg4.png">Blue</a>
+                        </li>
+                        <li>
+                            <a id="bg2" href="#" title="Select this card"><img src="/images/bg6.png">Red</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-5 text-right">
+                <button class="mt-5 mb-3 btn btn-inverse" id="generateDeck">Next > Generate Cards
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="slide2" class="row">
+        <div class="col-md-7">
+            <div class="slick-carousel mx-auto">
+            </div>
+        </div>
+        <div class="col-md-5 bg-lg1 p-3">
+            <h6>Step 2 : Order Your Deck</h6>
+            <div class="mt-5 bg-lg2 p-4 br-2">
+                <p>A. Self Print</p>
+                <button class="btn btn btn-primary" id="downloadDeck">Download & Print Free</button>
+                <button class="mt-3 btn btn-primary" id="removeBranding">Remove AgileShop.com Branding</button>
+            </div>
+            <div class="mt-5 mb-5 bg-lg2 p-4 br-2">
+                <p>B. Professional Print</p>
+                <button class="btn btn btn-success" id="orderDeck">Order Now</button>
+            </div>
+
+            <div class="mt-5 text-right">
+                <button class="mt-5 btn btn-inverse" id="customizeDeck">Previous < Customize Deck
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="checkout" class="row">
+        <div class="col-md-8">
+            <div id="freeCheckout" class="bg-lg1 p-5">
+                <h6 class="mb-4">Download Free & Print Yourself</h6>
+                <form action="" name="freeCheckoutForm">
+                    <div id="downloadEmailInputContainer" class="form-group">
+                        <input id="downloadEmailInput" type="email" value=""
+                               placeholder="Enter Your Email Address to Download"
+                               class="form-control input-lg" required>
+                        <span class="form-control-feedback fui-check"></span>
+                    </div>
+                    <div class="form-group">
+                        <input id="newsletterCheckbox" type="checkbox" checked>
+                        <p class="ml-2 d-inline">We often do discount weeks, we will send you an email the next time</p>
+                    </div>
+                    <button type="submit" class="mt-2 btn btn btn-lg btn-primary" id="freeCheckoutDownload">Download Now
+                    </button>
+                </form>
+            </div>
+            <div id="removeBrandingCheckout" class="bg-lg1 p-5">
+                <h6 class="mb-4">Remove Our Branding & Print Yourself</h6>
+                <form action="/charge" method="post" id="payment-form">
+                    <div class="form-row">
+                        <label for="card-element">
+                            Credit or debit card
+                        </label>
+                        <div id="card-element">
+                        </div>
+                        <div id="card-errors" role="alert"></div>
+                    </div>
+
+                    <button>Submit Payment</button>
+                </form>
+            </div>
+            <button class="btn" id="showSlide2"> < Previous Step
+            </button>
+        </div>
+        <div class="col-md-4">
+            <div id="downloadImg">
+            </div>
+        </div>
+    </div>
+
+    <!--
+        <div id="removeBrandingCheckout" class="row">
+            <div class="col-md-8" class="bg-lg1 p-5">
+                <h6 class="mb-4">Remove Our Branding & Print Yourself</h6>
+                <form action="/charge" method="post" id="payment-form">
+                    <div class="form-row">
+                        <label for="card-element">
+                            Credit or debit card
+                        </label>
+                        <div id="card-element">
+                        </div>
+                        <div id="card-errors" role="alert"></div>
+                    </div>
+
+                    <button>Submit Payment</button>
+                </form>
+            </div>
+            <div class="col-md-4">
+                <div id="downloadImg">
+                </div>
+            </div>
+        </div>
+        <div id="professionalPrintCheckout" class="row">
+            <div class="col-md-8">
+
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </div>
+    -->
+
+</div>
+
+<div class="container">
+    <canvas id="n1" width="334" height="498" class="hidden"></canvas>
+    <canvas id="n2" width="1190" height="1684" class="hidden"></canvas>
+    <canvas id="n3" width="1190" height="1684" class="hidden"></canvas>
+</div>
+
+<div class="container" style="display: none;">
+    <canvas id="p1" width="334" height="498" style="border:2px solid #000000"></canvas>
+    <canvas id="p0" width="1190" height="1684" style="border:2px solid #000000"></canvas>
+    <input type='file' id="imgInp"/>
+    <canvas id="canvas" width="334" height="498" style="border:2px solid #000000"></canvas>
+    <button id="download">Download</button>
+    <canvas id="c2" width="1190" height="1684" style="border:2px solid #000000"></canvas>
+</div>
+
+<script src="/js/vendor/jquery.min.js"></script>
+<script src="/js/vendor/jquery.validate.js"></script>
+<script src="/js/vendor/popper.min.js"></script>
+<script src="/js/vendor/bootstrap.js"></script>
+<script src="/js/vendor/flat-ui.min.js"></script>
+
+<script src="/js/vendor/async.js"></script>
+<script src="/js/vendor/fabric.min.js"></script>
+<script src="/js/vendor/jspdf.min.js"></script>
+<script src="/js/vendor/slick.min.js"></script>
+<script src="/js/vendor/fontfaceobserver.js"></script>
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<script src="/js/custom2.js"></script>
+<script src="/js/custom.js"></script>
+
+
+</body>
+</html>
