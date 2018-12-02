@@ -46,12 +46,12 @@ app.use(function (err, req, res, next) {
     res.render('error');
 });
 
-var port = process.env.PORT || '4000';
+var port = process.env.PORT || '6000';
 app.set('port', port);
 
 var server = http.createServer(app);
 
 server.listen(port, function () {
-    console.log('Uniprocure Site running on port: ' + port)
+    console.log('AgileShop Site running on port: ' + port)
 });
 
