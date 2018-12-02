@@ -79,16 +79,16 @@
             <h6>Step 2 : Order Your Deck</h6>
             <div class="mt-5 bg-lg2 p-4 br-2">
                 <p>A. Self Print</p>
-                <button class="btn btn btn-primary" id="downloadDeck">Download & Print Free</button>
+                <button class="btn btn btn-primary" id="downloadDeck">Download Free</button>
                 <button class="mt-3 btn btn-primary" id="removeBranding">Remove AgileShop.com Branding</button>
             </div>
             <div class="mt-5 mb-5 bg-lg2 p-4 br-2">
                 <p>B. Professional Print</p>
-                <button class="btn btn btn-success" id="orderDeck">Order Now</button>
+                <button class="btn btn btn-success" id="orderProfessionalPrints">Order Now</button>
             </div>
 
             <div class="mt-5 text-right">
-                <button class="mt-5 btn btn-inverse" id="customizeDeck">Previous < Customize Deck
+                <button class="mt-5 btn" id="customizeDeck">Previous < Customize Deck
                 </button>
             </div>
         </div>
@@ -115,6 +115,21 @@
             </div>
             <div id="removeBrandingCheckout" class="bg-lg1 p-5">
                 <h6 class="mb-4">Remove Our Branding & Print Yourself</h6>
+                <form action="/charge" method="post" id="payment-form">
+                    <div class="form-row">
+                        <label for="card-element">
+                            Credit or debit card
+                        </label>
+                        <div id="card-element">
+                        </div>
+                        <div id="card-errors" role="alert"></div>
+                    </div>
+
+                    <button>Submit Payment</button>
+                </form>
+            </div>
+            <div id="professionalPrintCheckout" class="bg-lg1 p-5">
+                <h6 class="mb-4">Order Professional Prints</h6>
                 <form action="/charge" method="post" id="payment-form">
                     <div class="form-row">
                         <label for="card-element">

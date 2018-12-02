@@ -86,6 +86,7 @@
             $('#checkout').show();
             $('#freeCheckout').show();
             $('#removeBrandingCheckout').hide();
+            $('#professionalPrintCheckout').hide();
         });
 
         $('#removeBranding').click(function (e) {
@@ -93,7 +94,17 @@
             generateDeck(true);
             $('#checkout').show();
             $('#freeCheckout').hide();
+            $('#professionalPrintCheckout').hide();
             $('#removeBrandingCheckout').show();
+        });
+
+        $('#orderProfessionalPrints').click(function (e) {
+            generateDeck(true);
+            $('#slide2').hide();
+            $('#checkout').show();
+            $('#freeCheckout').hide();
+            $('#removeBrandingCheckout').hide();
+            $('#professionalPrintCheckout').show();
         });
 
         $("form[name='freeCheckoutForm']").validate({
