@@ -94,7 +94,6 @@
             $('#checkout').show();
             $('#freeCheckout').hide();
             $('#removeBrandingCheckout').show();
-
         });
 
         $("form[name='freeCheckoutForm']").validate({
